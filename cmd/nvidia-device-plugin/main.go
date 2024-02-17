@@ -236,7 +236,10 @@ func startPlugins(c *cli.Context, flags []cli.Flag, restarting bool) ([]plugin.I
 	if err != nil {
 		return nil, false, fmt.Errorf("unable to load config: %v", err)
 	}
-	disableResourceRenamingInConfig(config)
+	// allow to rename resource instead of using nvidia.com/gpu for all cards
+	// docs: https://docs.google.com/document/d/1dL67t9IqKC2-xqonMi6DV7W2YNZdkmfX7ibB6Jb-qmk/
+	
+	// disableResourceRenamingInConfig(config)
 
 	// Update the configuration file with default resources.
 	klog.Info("Updating config with default resource matching patterns.")
